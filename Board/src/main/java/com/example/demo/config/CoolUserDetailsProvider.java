@@ -17,14 +17,9 @@ public class CoolUserDetailsProvider implements UserDetailsService{
 	private final AccountRepository repo;
 	@Override
 	public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
 		Account acc = repo.findByMail(mail);
-		if(acc != null) {
-			return acc;
-			}
-		else{
-			return null;
-		}
+		
+		return acc;
 	}
 
 }

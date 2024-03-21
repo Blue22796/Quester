@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dollars BBS</title>
+<style>
+  body {
+    background-color: black;
+  }
+  img {
+    display: block;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-bottom: 50px;
+    margin-left: auto;
+    width: 400px;
+    height: 400px;
+  }
+  /* removes focus border in Chrome */
+  *:focus {
+    outline: none;
+  }
+  #form {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    background-image: url(images/textfield.png);
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    width: 400px;
+    height: 200px;
+  }
+  #textfield {
+    width: 160px;
+    border: 0;
+    margin-top: 5px;
+    margin-left: 100px;
+  }
+</style>
+</head>
+<body onload="document.forms[0].pw.focus()">
+  <img src="https://dollars-bbs.org/images/dollars_logo.jpg">
+  <form id="form" action = "/api/v1/user/login" method = "post">
+    <input type="text" name="mail" id="mail" placeholder="Enter email"><br>
+    <input type="password" name="password" id="password" placeholder="Enter password"><br>
+    <br><br>
+    <input type="image" src="https://dollars-bbs.org/images/enter_button.png" onmouseover="this.src='https://dollars-bbs.org/images/enter_button_hover.png'" onmouseout="this.src='https://dollars-bbs.org/images/enter_button.png'" alt="Enter">
+  </form>
+
+</body>
+</html>

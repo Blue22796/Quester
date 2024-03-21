@@ -33,8 +33,6 @@ public class QuestController {
 	
 	@PostMapping("api/v1/quests")
 	public String postStuff(@RequestBody Quest quest) {
-		System.out.println("Done!");
-
 		questsService.insertQuest(quest);
 		return "Success";
 	}

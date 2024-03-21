@@ -1,7 +1,6 @@
 package com.example.demo.config;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
@@ -14,8 +13,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
 import lombok.AllArgsConstructor;
 
 
@@ -29,15 +26,16 @@ public class CoolAuthenticationProvider implements AuthenticationProvider{
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		String username = authentication.getName();
-		UserDetails user = service.loadUserByUsername(username);
 		String pass = authentication.getCredentials().toString();
-		if(user!=null&&user.getPassword().equals(pass)) {
-			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();	
-			authorities.add(new SimpleGrantedAuthority("Bomb"));
-			return new UsernamePasswordAuthenticationToken(username, pass, authorities);
-		}			
-		throw new AuthenticationCredentialsNotFoundException("Credentials incorrect!");
 		
+		UserDetails user = service.loadUserByUsername(username);
+		
+		if(user==null||!user.getPassword().equals(pass)) 
+			throw new AuthenticationCredentialsNotFoundException("Credentials incorrect!");
+		
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();	
+		authorities.add(new SimpleGrantedAuthority("Bomb"));
+		return new UsernamePasswordAuthenticationToken(username, pass, authorities);		
 	}
 
 	@Override
