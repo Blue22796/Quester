@@ -19,4 +19,8 @@ public class Quest {
 	@Setter
 	@Getter
 	private String description;
+	@OneToOne
+	@Getter
+	@Setter
+	private User author;
 }

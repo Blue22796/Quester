@@ -16,6 +16,9 @@ public class CustomLogger {
 	@Pointcut("execution(* com.example.demo.Services.QuestService.*(..))")
 	public void getReq() {}
 	
+	@Pointcut("execution(* com.example.demo.Controllers.LoginController.signup(..))")
+	public void sth() {}
+	
 	@Around("getReq()")
 	public Object loggingGet(ProceedingJoinPoint pjp) {
 		try{

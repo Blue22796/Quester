@@ -29,7 +29,7 @@ public class PlayGroundController {
 	}
 	
 	@GetMapping("/api/v1/play/{n}/{str}")
-	public Solution slv(@PathVariable("n")String num,@PathVariable("str") String s) {
-		return service.serve(Integer.parseInt(num), s);
+	public String slv(@PathVariable("n")String num,@PathVariable("str") String s) {
+		return service.serve(Integer.parseInt(num), s).getText();
 	}
 }
